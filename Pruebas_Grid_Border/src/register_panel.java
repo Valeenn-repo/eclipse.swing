@@ -87,11 +87,17 @@ public class register_panel extends JPanel {
 	}
 	private class RegisterListener implements ActionListener {
 
-	    @Override
+	    @SuppressWarnings("deprecation")
+		@Override
 	    public void actionPerformed(ActionEvent e) {
+	    	if(nameField.getText().isEmpty() ||  emailField.getText().isEmpty()||  passwordField.getText().isEmpty()||  confirmField.getText().isEmpty()) {
+	    		JOptionPane.showMessageDialog(null, "Introduzca todos los campos.", "", JOptionPane.WARNING_MESSAGE);
+	    	}else if(!(passwordField.getText().equals(confirmField.getText()))) {
+    			JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden", "", JOptionPane.WARNING_MESSAGE);
+	    	}else {
 	    	int result = JOptionPane.showConfirmDialog(
-	    			null, 
-	    			"Registro correcto. ¿Confirmar?", 
+	    			null,
+	    			"Registro correcto. ¿Confirmar?",
 	    			"",
 	    			JOptionPane.YES_NO_OPTION
 			);
@@ -103,4 +109,6 @@ public class register_panel extends JPanel {
 
 	  }
 
+	}
+	
 }

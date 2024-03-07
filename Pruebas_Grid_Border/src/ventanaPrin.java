@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.GridLayout;
@@ -20,14 +21,18 @@ import java.awt.SystemColor;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ventanaPrin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField textFieldNombre;
 	private JTextField textField_1;
+	protected JComboBox<?> comboBox = new JComboBox();
 	register_panel panel = new register_panel();
+	//registro reg = new registro();
 
 	/**
 	 * Launch the application.
@@ -111,19 +116,48 @@ public class ventanaPrin extends JFrame {
 		JLabel lblNewLabel_7 = new JLabel("  ");
 		panelGridLogin.add(lblNewLabel_7);
 		
-		JComboBox comboBox = new JComboBox();
+		
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Seleccione", "Admin", "Visitante"}));
 		panelGridLogin.add(comboBox);
 		
-		textField = new JTextField();
-		panelGridLogin.add(textField);
-		textField.setColumns(10);
+		textFieldNombre = new JTextField();
+		panelGridLogin.add(textFieldNombre);
+		textFieldNombre.setColumns(10);
 		
 		textField_1 = new JTextField();
 		panelGridLogin.add(textField_1);
 		textField_1.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Iniciar Sesión");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String tipoSeleccionado = getComboBoxString();
+
+		        if ("Seleccione".equals(tipoSeleccionado)) {
+		            JOptionPane.showMessageDialog(null, "Seleccione un tipo de usuario.", "", JOptionPane.WARNING_MESSAGE);
+		        }else if(textFieldNombre.getText().isEmpty()){
+		        	JOptionPane.showMessageDialog(null, "Introduzca el nombre", "", JOptionPane.WARNING_MESSAGE);
+		        }else if(textField_1.getText().isEmpty()){
+		        	JOptionPane.showMessageDialog(null, "Introduzca la contraseña", "", JOptionPane.WARNING_MESSAGE);
+		        }
+		        else {
+		            int result = JOptionPane.showConfirmDialog(
+		                null,
+		                "Inicio correcto. ¿Confirmar?",
+		                "",
+		                JOptionPane.YES_NO_OPTION
+		            );
+
+		            if (result == JOptionPane.YES_OPTION) {
+		                registro reg = new registro();
+		                reg.setCampos(tipoSeleccionado, getNombre());  // Pasar el valor seleccionado del JComboBox
+		                reg.setVisible(true);
+		                
+		                dispose();
+		            }
+		        }
+			}
+		});
 		panelGridLogin.add(btnNewButton);
 		
 		JPanel panelInferior = new JPanel();
@@ -169,5 +203,15 @@ public class ventanaPrin extends JFrame {
 		lblNewLabel_10.setBounds(201, 0, 172, 68);
 		panelFormulario.add(lblNewLabel_10);
 		
+		
+		
 	}
+	
+	public String getComboBoxString() {
+		return comboBox.getSelectedItem().toString();
+	}
+	public String getNombre() {
+		return textFieldNombre.getText();
+	}
+	
 }
