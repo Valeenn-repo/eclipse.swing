@@ -21,8 +21,6 @@ import javax.swing.JSeparator;
 public class registro {
 
 	private JFrame frmSmarthouse;
-	private String tipoUsuario;
-	private String nombre;
 	private JLabel labelCombo;
 	private JLabel labelNombre;
 
@@ -217,11 +215,8 @@ public class registro {
     // Otros atributos y métodos
 
     public void setCampos(String tipoUsuario, String nombre) {
-    	this.nombre = nombre;
-        this.tipoUsuario = tipoUsuario;
-        labelCombo.setText(tipoUsuario);
+    	labelCombo.setText(tipoUsuario);
         labelNombre.setText(nombre);
-        // Puedes realizar otras acciones relacionadas con el tipo de usuario aquí
     }
 
 }
