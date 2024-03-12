@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -102,24 +103,60 @@ public class swing_Builder {
 		slider.setPaintLabels(true);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
+		
+		JButton btnNewButton_4 = new JButton("volver");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int choice = JOptionPane.showInternalConfirmDialog(null, "confirmado", "información", JOptionPane.OK_CANCEL_OPTION);
+				if (choice == JOptionPane.OK_OPTION) {
+				    Dialogo_Prueba window = new Dialogo_Prueba();
+				    window.setLocationRelativeTo(null);
+				    window.setVisible(true);
+				    frmSwing.dispose();
+				}
+
+			}
+		});
+		
+		JButton btnNewButton_5 = new JButton("nueva pagina");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				        int choice = JOptionPane.showInternalConfirmDialog(null, "confirmado", "información", JOptionPane.OK_CANCEL_OPTION);
+				        if (choice == JOptionPane.OK_OPTION) {
+				            swing_Builder window = new swing_Builder();
+				            window.frmSwing.setLocationRelativeTo(null);
+				            window.frmSwing.setVisible(true);
+				            frmSwing.dispose();
+				        }
+				   
+
+			}
+		});
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addContainerGap(154, Short.MAX_VALUE)
+					.addContainerGap(162, Short.MAX_VALUE)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING, false)
 						.addComponent(rdbtnNewRadioButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(rdbtnNewRadioButton_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGap(112))
-				.addComponent(separator, GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+				.addComponent(separator, GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
 				.addGroup(gl_panel_2.createSequentialGroup()
-					.addContainerGap(69, Short.MAX_VALUE)
+					.addContainerGap(81, Short.MAX_VALUE)
 					.addComponent(slider, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE)
 					.addGap(62))
-				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
-					.addGap(159)
-					.addComponent(lblNewLabel_1)
-					.addContainerGap(172, Short.MAX_VALUE))
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap(148, Short.MAX_VALUE)
+					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+					.addGap(98))
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addContainerGap(170, Short.MAX_VALUE)
+					.addComponent(btnNewButton_4)
+					.addGap(18)
+					.addComponent(btnNewButton_5)
+					.addGap(41))
 		);
 		gl_panel_2.setVerticalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -132,9 +169,13 @@ public class swing_Builder {
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(29)
 					.addComponent(slider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(46)
-					.addComponent(lblNewLabel_1)
-					.addGap(64))
+					.addGap(18)
+					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addGap(33)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnNewButton_5)
+						.addComponent(btnNewButton_4))
+					.addGap(23))
 		);
 		panel_2.setLayout(gl_panel_2);
 		btnNewButton.addActionListener(new ActionListener() {

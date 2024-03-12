@@ -19,6 +19,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class Dialogo_Prueba extends JDialog {
 
@@ -134,6 +136,7 @@ public class Dialogo_Prueba extends JDialog {
 			panel.setLayout(new BorderLayout(0, 0));
 			{
 				JTextArea textArea = new JTextArea();
+				textArea.setBorder(new LineBorder(new Color(0, 0, 0)));
 				panel.add(textArea);
 			}
 			{
@@ -148,10 +151,6 @@ public class Dialogo_Prueba extends JDialog {
 				JLabel lblNewLabel_8 = new JLabel("   ");
 				panel.add(lblNewLabel_8, BorderLayout.EAST);
 			}
-			{
-				JLabel lblNewLabel_9 = new JLabel(" ");
-				panel.add(lblNewLabel_9, BorderLayout.SOUTH);
-			}
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -160,14 +159,15 @@ public class Dialogo_Prueba extends JDialog {
 			{
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						JOptionPane.showInternalMessageDialog(null,"confirmado",
-								"información", JOptionPane.INFORMATION_MESSAGE);
-						swing_Builder window = new swing_Builder();
-						window.frmSwing.setVisible(true);
-						dispose();
-					}
-					
+				    public void actionPerformed(ActionEvent e) {
+				        int choice = JOptionPane.showInternalConfirmDialog(null, "confirmado", "información", JOptionPane.OK_CANCEL_OPTION);
+				        if (choice == JOptionPane.OK_OPTION) {
+				            swing_Builder window = new swing_Builder();
+				            window.frmSwing.setLocationRelativeTo(null);
+				            window.frmSwing.setVisible(true);
+				            dispose();
+				        }
+				    }
 				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
