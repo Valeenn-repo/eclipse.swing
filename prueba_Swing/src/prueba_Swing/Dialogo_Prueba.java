@@ -21,6 +21,11 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import javax.swing.JEditorPane;
+import javax.swing.JToggleButton;
+import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.JSlider;
 
 public class Dialogo_Prueba extends JDialog {
 
@@ -125,8 +130,34 @@ public class Dialogo_Prueba extends JDialog {
 					panel.add(lblNewLabel_4, BorderLayout.NORTH);
 				}
 				{
-					JLabel lblNewLabel_2 = new JLabel(" ");
-					panel.add(lblNewLabel_2, BorderLayout.SOUTH);
+					JPanel panel_1 = new JPanel();
+					panel.add(panel_1, BorderLayout.SOUTH);
+					panel_1.setLayout(new BorderLayout(0, 0));
+					{
+						JLabel lblNewLabel_2 = new JLabel("Prueba:    ");
+						panel_1.add(lblNewLabel_2, BorderLayout.WEST);
+					}
+					{
+						JLabel lblNewLabel_9 = new JLabel(" ");
+						panel_1.add(lblNewLabel_9, BorderLayout.NORTH);
+					}
+					{
+						JLabel lblNewLabel_12 = new JLabel("  ");
+						panel_1.add(lblNewLabel_12, BorderLayout.EAST);
+					}
+					{
+						JLabel lblNewLabel_13 = new JLabel("  ");
+						panel_1.add(lblNewLabel_13, BorderLayout.SOUTH);
+					}
+					{
+						JPanel panel_2 = new JPanel();
+						panel_1.add(panel_2, BorderLayout.CENTER);
+						panel_2.setLayout(new BorderLayout(0, 0));
+						{
+							JSlider slider = new JSlider();
+							panel_2.add(slider, BorderLayout.WEST);
+						}
+					}
 				}
 			}
 		}
